@@ -14,7 +14,6 @@ function App() {
   function handleSubmit(newObj) {
     setHogsData([...hogsData, newObj]);
   }
-  console.log(hogsData);
 
   function handleFilter(e) {
     setIsfilter(e.target.value);
@@ -24,7 +23,7 @@ function App() {
   }
 
   const filteredHogs = hogsData.filter(
-    (hog) => hog.greased || isFilter === "All"
+    (hog) => isFilter === "All" || hog.greased
   );
   switch (isSort) {
     case "Name":
@@ -32,7 +31,6 @@ function App() {
       break;
     case "Weight":
       filteredHogs.sort((a, b) => a.weight - b.weight);
-      break;
     default:
       filteredHogs.sort();
   }
@@ -52,5 +50,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
