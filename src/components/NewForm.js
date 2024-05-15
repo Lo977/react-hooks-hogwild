@@ -20,7 +20,13 @@ function NewForm({ onFormSubmit }) {
   function handleSubmit(e) {
     e.preventDefault();
     onFormSubmit(formData);
-    setFormData({ name: "", specialty: "", weight: 1, image: "" });
+    setFormData({
+      name: "",
+      specialty: "",
+      weight: 1,
+      image: "",
+      greased: false,
+    });
   }
 
   return (

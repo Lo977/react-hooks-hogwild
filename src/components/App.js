@@ -14,7 +14,7 @@ function App() {
   function handleSubmit(newObj) {
     setHogsData([...hogsData, newObj]);
   }
-  console.log(hogsData);
+  console.log("this is our state: ", hogsData);
 
   function handleFilter(e) {
     setIsfilter(e.target.value);
@@ -26,6 +26,7 @@ function App() {
   const filteredHogs = hogsData.filter(
     (hog) => hog.greased || isFilter === "All"
   );
+  console.log("this is filtered hogs: ", filteredHogs);
   switch (isSort) {
     case "Name":
       filteredHogs.sort((a, b) => a.name.localeCompare(b.name));
@@ -45,8 +46,8 @@ function App() {
       <NewForm onFormSubmit={handleSubmit} />
 
       <div className="ui link cards">
-        {filteredHogs.map((hog) => (
-          <HogCard key={hog.name} hog={hog} />
+        {filteredHogs.map((hog, index) => (
+          <HogCard key={index} hog={hog} />
         ))}
       </div>
     </div>
